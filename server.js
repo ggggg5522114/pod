@@ -3,6 +3,7 @@ import cors from "cors";
 import OpenAI from "openai";
 
 const app = express();
+
 app.use(cors());
 app.use(express.json());
 
@@ -15,8 +16,8 @@ app.post("/api/ideas", async (req, res) => {
 
   try {
     const prompt = `
-أنت خبير عالمي في صناعة المحتوى.
-أعطني ${count || 5} أفكار محتوى احترافية باللغة العربية.
+أنت خبير عالمي في صناعة المحتوى وصياغة الأفكار الإبداعية.
+أنشئ ${count || 5} أفكار محتوى باللغة العربية بشكل احترافي.
 
 المجال: ${niche}
 المنصة: ${platform}
@@ -24,11 +25,11 @@ app.post("/api/ideas", async (req, res) => {
 الجمهور المستهدف: ${audience}
 تفاصيل إضافية: ${details || "لا يوجد"}
 
-أريد النتيجة بصيغة JSON array فقط بهذا الشكل:
+أعد النتيجة بصيغة JSON array فقط وبدون أي شرح إضافي، بهذا الشكل:
 [
   {
     "title": "عنوان الفكرة",
-    "description": "وصف مختصر للفكرة",
+    "description": "وصف مختصر وقوي للفكرة",
     "hook": "جملة افتتاحية جذابة",
     "cta": "دعوة لاتخاذ إجراء"
   }
