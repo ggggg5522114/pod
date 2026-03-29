@@ -13,16 +13,16 @@ const statusBox = document.getElementById("status");
 const resultsBox = document.getElementById("results");
 
 function setStatus(message, type = "") {
-  statusBox.className = "status-box";
+  statusBox.className = "status";
   if (type) statusBox.classList.add(type);
   statusBox.textContent = message;
 }
 
 function renderEmpty() {
   resultsBox.innerHTML = `
-    <div class="empty-state">
-      <h4>لا توجد أفكار بعد</h4>
-      <p>ابدأ بإدخال التفاصيل ثم اضغط على زر إنشاء أفكار.</p>
+    <div class="empty-box">
+      <h4>لا توجد نتائج بعد</h4>
+      <p>أدخل بياناتك ثم اضغط على زر إنشاء أفكار.</p>
     </div>
   `;
 }
@@ -56,12 +56,12 @@ async function generateIdeas() {
   };
 
   if (!payload.niche) {
-    setStatus("يرجى إدخال المجال أولاً.", "error");
+    setStatus("يرجى كتابة المجال أولاً.", "error");
     nicheInput.focus();
     return;
   }
 
-  setStatus("جاري إنشاء أفكار احترافية لك...", "loading");
+  setStatus("جاري إنشاء أفكار احترافية...", "loading");
   generateBtn.disabled = true;
 
   try {
@@ -95,8 +95,8 @@ exampleBtn.addEventListener("click", () => {
   toneInput.value = "إبداعي";
   audienceInput.value = "أصحاب المشاريع الصغيرة";
   countInput.value = "5";
-  detailsInput.value = "أريد أفكار قصيرة وقوية وقابلة للانتشار وتناسب الريلز.";
-  setStatus("تم إدخال مثال جاهز. اضغط إنشاء أفكار.", "success");
+  detailsInput.value = "أريد أفكار قصيرة، قوية، حديثة، ومناسبة للريلز وقابلة للانتشار.";
+  setStatus("تمت تعبئة مثال جاهز.", "success");
 });
 
 clearBtn.addEventListener("click", () => {
@@ -107,7 +107,7 @@ clearBtn.addEventListener("click", () => {
   countInput.value = "5";
   detailsInput.value = "";
   renderEmpty();
-  setStatus("تم مسح البيانات.", "");
+  setStatus("تم مسح الحقول.", "");
 });
 
 generateBtn.addEventListener("click", generateIdeas);
