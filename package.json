@@ -1,8 +1,8 @@
 {
-  "name": "ideaspark-ai",
+  "name": "novaidea-ai",
   "version": "1.0.0",
+  "description": "Premium AI content ideas generator",
   "type": "module",
-  "description": "Professional AI content ideas generator",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
